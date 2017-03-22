@@ -4,11 +4,17 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:single) do |t|
   ENV['CONFIG_NAME'] ||= "single"
-  t.pattern = Dir.glob('spec/*.rb')
+  t.pattern = Dir.glob('spec/browserstack/*_spec.rb')
   t.rspec_opts = '--format documentation'
   t.verbose = false
 end
-task :default => :single
+RSpec::Core::RakeTask.new(:local) do |t|
+  ENV['CONFIG_NAME'] ||= "single"
+  t.pattern = Dir.glob('spec/local/*_spec.rb')
+  t.rspec_opts = '--format documentation'
+  t.verbose = false
+end
+task :default => :local
 
 # RSpec::Core::RakeTask.new(:local) do |t|
 #   ENV['CONFIG_NAME'] ||= "local"
