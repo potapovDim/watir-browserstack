@@ -1,0 +1,12 @@
+server: "hub-cloud.browserstack.com"
+user: "potapovd1"
+key: "S4iYuf1umdX1nUoC744j"
+
+common_caps:
+  "build": "rspec-browserstack"
+  "browserstack.debug": true
+
+browser_caps:
+  -
+    "browser": "chrome"
+    "browserstack.local": true
