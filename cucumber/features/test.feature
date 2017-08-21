@@ -1,10 +1,4 @@
-Feature: Amazon Search functionality
-
-
-Scenario: Users can search for a specific item on Amazon
-  Given a user goes to Amazon
-  When they search for "pens"
-  Then amazon should return results for "pens"
+Feature: Post a job
 
 Scenario Outline: Users search for a variety of items
   Given a user goes to Amazon
@@ -12,7 +6,7 @@ Scenario Outline: Users search for a variety of items
   Then the results returned will display <query>
 
   Examples:
-  |query  |
-  |laptop |
-  |guitar |
-  |pants  |
+  | client  | email           | title  | location  | salary | currency | description |
+  | ro      | test@0test.test | title1 | location1 | 1000   | u        | small comp  |
+  | ko      | test@1test.test | title2 | location2 | 2000   | no       | medium comp |
+  | mo      | test@2test.test | title3 | location3 | 3000   | sd       | large comp  |
