@@ -9,42 +9,113 @@ class NewJob
     @company_currency = '#currency'
     @job_publish_at = '#publish-at'
     @job_apply_by = '#apply-by'
-    @date_picker_day = '.ngb-dp-day'
+    @application_link = '#link'
+    @date_picker_day = '.btn-secondary'
     @cancel_button = '#cancel'
     @post_button = '#save'
     @description_area = '.fr-element.fr-view'
-    @menu_jobs = '#menu-jobs'
-    @add_new_job = '#add'
+    @dropdown_item = '.dropdown-item'
   end
 
-  def clear_and_set_value(value)
+  def set_compay_name(value)
     @browser.element(css: @company_studio_name).focus
-      for i in 0..@browser.element(css: selector).value.length - 1
+      for i in 0..@browser.element(css: @company_studio_name).value.length - 1
       @browser.send_keys :backspace
     end
-    @browser.element(css: selector).send_keys value
+    @browser.element(css: @company_studio_name).send_keys value
+    @browser.elements(css: @dropdown_item)[0].fire_event 'click'
     return self
   end
 
-  def navigate(url)
-    @browser.goto url
-  end
-
-  def get_input_value(selector)
-    return @browser.element(css: selector).value
-  end
-
-  def get_browser_title
-    return @browser.title
-  end
-
-  def get_browser_url
-    return @browser.url
-  end
-
-  def click_element(selector)
-    @browser.element(css: selector).fire_event 'click'
+  def set_compay_description(value)
+    @browser.element(css: @description_area).focus
+      for i in 0..@browser.element(css: @description_area).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @description_area).send_keys value
     return self
+  end
+
+  def set_email(value)
+    @browser.element(css: @company_email).focus
+    for i in 0..@browser.element(css: @company_email).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @company_email).send_keys value
+    return self
+  end
+
+  def set_application_link(value)
+    @browser.element(css: @application_link).focus
+    for i in 0..@browser.element(css: @application_link).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @application_link).send_keys value
+    return self
+  end
+
+  def set_title(value)
+    @browser.element(css: @company_title).focus
+    for i in 0..@browser.element(css: @company_title).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @company_title).send_keys value
+    return self
+  end
+
+  def set_location(value)
+    @browser.element(css: @company_location).focus
+    for i in 0..@browser.element(css: @company_location).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @company_location).send_keys value
+    return self
+  end
+  
+  def set_salary(value)
+    @browser.element(css: @company_salary).focus
+    for i in 0..@browser.element(css: @company_salary).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @company_salary).send_keys value
+    return self
+  end
+
+  def set_currency(value)
+    @browser.element(css: @company_studio_name).focus
+    for i in 0..@browser.element(css: @company_studio_name).value.length - 1
+      @browser.send_keys :backspace
+    end
+    @browser.element(css: @company_studio_name).send_keys value
+    @browser.elements(css: @dropdown_item)[0].fire_event 'click'
+    return self
+  end
+
+  def set_publish_at(day)
+    @browser.element(css: @job_publish_at).fire_event 'focus'
+    for i in 0..@browser.elements(css: @date_picker_day).length - 1 
+      @browser.elements(css: @date_picker_day)[i].text == day
+      if @browser.elements(css: @date_picker_day)[i].text === day
+        @browser.elements(css: @date_picker_day)[i].fire_event 'click'
+      end
+    end
+    return self
+  end
+
+  def set_apply_by(day)
+    @browser.element(css: @job_apply_by).fire_event 'focus'
+    for i in 0..@browser.elements(css: @date_picker_day).length - 1 
+      @browser.elements(css: @date_picker_day)[i].text == day
+      if @browser.elements(css: @date_picker_day)[i].text === day
+        @browser.elements(css: @date_picker_day)[i].fire_event 'click'
+      end
+    end
+    return self
+  end
+
+
+  def confirm_new_job
+    @browser.element(css: @post_button).fire_event 'click'
   end
 end
 

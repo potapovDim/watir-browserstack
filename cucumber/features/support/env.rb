@@ -1,5 +1,6 @@
 require 'watir'
 require 'cucumber'
+require_relative './deps'
 
 Before do |scenario|
   def assert_it message, &block
@@ -35,7 +36,8 @@ Before do |scenario|
       :url => "http://127.0.0.1:4444/wd/hub",
       :desired_capabilities => @caps) 
   else
-    @browser = Watir::Browser.new :chrome   
+    @browser = Watir::Browser.new :chrome
+    @header = Header.new @browser
   end
 end
 After do |scenario|

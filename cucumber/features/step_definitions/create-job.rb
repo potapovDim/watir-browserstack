@@ -1,15 +1,24 @@
-Given(/^a user goes to timetoriot$/) do
-  @new_insta = 10 
+Given(/^I chosen to create new job$/) do
+  @browser.goto 'http://new.timetoriot.com'
+  @new_job = @header.go_to_jobs_list().add_new_job()
 end
 
-When(/^the user go to jobs list (.*)$/) do |clien|
-  @one_new =  @new_insta+ 10
-  #@command_executor.click_element(@selectors_list.menu_jobs)
-  assert_it("Title should contains 'Creative jobs'") {@one_new ==20}
+When(/^I create new job with valid data$/) do
+  @new_job.set_compay_name('co')
+          .set_compay_description('new test company')
+          .set_email('test1@test.test')
+          .set_title('test title')
+          .set_location('test location')
+          .set_salary('1000')
+          .set_currency('u')
+          .set_publish_at('22')
+          .set_apply_by('23')
 end
 
-Then(/^the user go to add new job (.*)$/) do |email|
-  @one_more_new = @one_new -5
-  #@command_executor.click_element(@selectors_list.menu_jobs)
-  assert_it("Title should contains 'New job'") {@one_more_new == 15}
+Then(/^I click confirm button/) do 
+  @new_job.confirm_new_job()
+end
+
+And(/^My new job success created/) do
+  assert_it("Title should contains 'Creative jobs'") {@browser.title.includes?'test' == true}
 end
