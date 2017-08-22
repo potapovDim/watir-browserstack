@@ -1,13 +1,15 @@
-Given(/^a user goes to Amazon$/) do
-  @browser.goto "http://www.amazon.com"
+Given(/^a user goes to timetoriot$/) do
+  @new_insta = 10 
 end
 
-When(/^the user looks for (.*)$/) do |query|
-  @browser.text_field(:id => "twotabsearchtextbox").set "#{query}"
-  @browser.send_keys :return
+When(/^the user go to jobs list (.*)$/) do |clien|
+  @one_new =  @new_insta+ 10
+  #@command_executor.click_element(@selectors_list.menu_jobs)
+  assert_it("Title should contains 'Creative jobs'") {@one_new ==20}
 end
 
-Then(/^the results returned will display (.*)$/) do |query|
-  @browser.li(:id => "result_2").wait_until_present
-  assert_it ('Verfied Results Display'){@browser.text.include? "#{query}"}
+Then(/^the user go to add new job (.*)$/) do |email|
+  @one_more_new = @one_new -5
+  #@command_executor.click_element(@selectors_list.menu_jobs)
+  assert_it("Title should contains 'New job'") {@one_more_new == 15}
 end

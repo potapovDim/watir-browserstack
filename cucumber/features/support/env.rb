@@ -37,7 +37,6 @@ Before do |scenario|
   else
     @browser = Watir::Browser.new :chrome   
   end
-
 end
 After do |scenario|
   if scenario.failed?
