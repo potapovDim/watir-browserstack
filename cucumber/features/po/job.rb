@@ -91,25 +91,17 @@ class NewJob
     return self
   end
 
-  def set_publish_at(day)
-    @browser.element(css: @job_publish_at).fire_event 'focus'
-    for i in 0..@browser.elements(css: @date_picker_day).length - 1 
-      @browser.elements(css: @date_picker_day)[i].text == day
-      if @browser.elements(css: @date_picker_day)[i].text === day
-        @browser.elements(css: @date_picker_day)[i].fire_event 'click'
-      end
-    end
+  def set_apply_by()
+    @browser.element(css: @job_apply_by).fire_event 'focus'
+    @browser.element(text:(Time.new.day.to_i + 1).to_s).click
+    @browser.send_keys :escape
     return self
   end
-
-  def set_apply_by(day)
-    @browser.element(css: @job_apply_by).fire_event 'focus'
-    for i in 0..@browser.elements(css: @date_picker_day).length - 1 
-      @browser.elements(css: @date_picker_day)[i].text == day
-      if @browser.elements(css: @date_picker_day)[i].text === day
-        @browser.elements(css: @date_picker_day)[i].fire_event 'click'
-      end
-    end
+  
+  def set_publish_at()
+    @browser.element(css: @job_publish_at).fire_event 'focus'
+    @browser.element(text: (Time.new.day.to_i).to_s).click
+    @browser.send_keys :escape
     return self
   end
 

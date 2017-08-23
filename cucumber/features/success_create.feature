@@ -1,10 +1,10 @@
 Feature: Job
 
-Scenario: Users create new job
-  Given I chosen to create new job
-  When I create new job with valid data
-  Then I click confirm button
-  And My new job success created
+Scenario: User create new job
+  Given User chosen to create new job
+  When User fills data valid data
+  Then User click confirm button
+  And User see success message 
 
   # Examples:
   # | client  | email           | title  | location  | salary | currency | description |  
