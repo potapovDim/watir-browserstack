@@ -27,30 +27,37 @@ class NewJob
     @error_description = '#error-description'
   end
 
-  def get_data_error(field)
-    case field
+  def clear_input_value(input)
+    field = nil
+    case input
       when 'company'
-        return @browser.element(css: @error_company_studio_name).text
+        field = @company_studio_name
       when 'email'
-        return @browser.element(css: @error_email).text
+        field = @company_email
       when 'currency'
-        return @browser.element(css: @error_currency).text
+        field = @company_currency
       when 'link'
-        return @browser.element(css: @error_link).text
+        field = @application_link
       when 'title'
-        return @browser.element(css: @error_title).text
+        field = @company_title
       when 'location'
-        return @browser.element(css: @error_location).text
+        field = @company_location
       when 'publish'
-        return @browser.element(css: @error_publish_at).text
+        field = @job_publish_at
       when 'apply'
-        return @browser.element(css: @error_apply_by).text
+        field = @job_apply_by
       when 'description'
-        return @browser.element(css: @error_description).text
+        field = @description_area
     end
+    @browser.element(css: field).focus
+    @browser.element(css: field).focus
+    for i in 0..@browser.element(css: field).value.length - 1
+      @browser.send_keys :backspace
+    end
+    return self
   end
 
-  def clear_input(input)
+  def get_data_error(field)
     case field
       when 'company'
         return @browser.element(css: @error_company_studio_name).text
