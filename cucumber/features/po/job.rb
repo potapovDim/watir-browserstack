@@ -15,6 +15,62 @@ class NewJob
     @post_button = '#save'
     @description_area = '.fr-element.fr-view'
     @dropdown_item = '.dropdown-item'
+    #error messages
+    @error_company_studio_name = '#error-company'
+    @error_email = '#error-email'
+    @error_link = '#error-link'
+    @error_currency = '#error-currency'
+    @error_title = '#error-title'
+    @error_location = '#error-location'
+    @error_publish_at = '#error-publish-at'
+    @error_apply_by = '#error-apply-by'
+    @error_description = '#error-description'
+  end
+
+  def get_data_error(field)
+    case field
+      when 'company'
+        return @browser.element(css: @error_company_studio_name).text
+      when 'email'
+        return @browser.element(css: @error_email).text
+      when 'currency'
+        return @browser.element(css: @error_currency).text
+      when 'link'
+        return @browser.element(css: @error_link).text
+      when 'title'
+        return @browser.element(css: @error_title).text
+      when 'location'
+        return @browser.element(css: @error_location).text
+      when 'publish'
+        return @browser.element(css: @error_publish_at).text
+      when 'apply'
+        return @browser.element(css: @error_apply_by).text
+      when 'description'
+        return @browser.element(css: @error_description).text
+    end
+  end
+
+  def clear_input(input)
+    case field
+      when 'company'
+        return @browser.element(css: @error_company_studio_name).text
+      when 'email'
+        return @browser.element(css: @error_email).text
+      when 'currency'
+        return @browser.element(css: @error_currency).text
+      when 'link'
+        return @browser.element(css: @error_link).text
+      when 'title'
+        return @browser.element(css: @error_title).text
+      when 'location'
+        return @browser.element(css: @error_location).text
+      when 'publish'
+        return @browser.element(css: @error_publish_at).text
+      when 'apply'
+        return @browser.element(css: @error_apply_by).text
+      when 'description'
+        return @browser.element(css: @error_description).text
+    end
   end
 
   def set_compay_name(value)
@@ -105,24 +161,7 @@ class NewJob
     return self
   end
 
-
   def confirm_new_job
     @browser.element(css: @post_button).fire_event 'click'
   end
 end
-
-
-# @company_studio_name = '#company'
-# @company_email = '#email'
-# @company_location = '#location'
-# @company_title = '#title'
-# @company_salary = '#salary'
-# @company_currency = '#currency'
-# @job_publish_at = '#publish-at'
-# @job_apply_by = '#apply-by'
-# @date_picker_day = '.ngb-dp-day'
-# @cancel_button = '#cancel'
-# @post_button = '#save'
-# @description_area = '.fr-element.fr-view'
-# @menu_jobs = '#menu-jobs'
-# @add_new_job = '#add'
